@@ -1,0 +1,81 @@
+.content-table{
+    display: flex;
+    flex-wrap: wrap;
+    grid-gap: 24px;
+    margin-top: 24px;
+    width: 100%;
+    color: var(--dark);
+}
+
+.content-table>div{
+    border-radius: 20px;
+    background: var(--white);
+    padding: 24px;
+    overflow-x: auto;
+}
+
+.content-table .header{
+    display: flex;
+    align-items: center;
+    grid-gap: 16px;
+    margin-bottom: 24px;
+}
+
+.content-table .table-course{
+    flex-grow: 1;
+    flex-basis: 500px;
+}
+
+.content-table table{
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.content-table thead{
+    border-bottom: 1px solid var(--grey);
+}
+
+.content-table table th{ 
+    padding-bottom: 12px;
+    font-size: 13px;
+    text-align: left;
+}
+
+.content-table table td{
+    padding: 7px 0;
+}
+
+.content-table table tr td:first-child{
+    display: flex;
+    align-items: center;
+    grid-gap: 12px;
+    padding-left: 6px;
+}
+
+.content-table .header h3{
+    margin-right: auto;
+    font-size: 24px;
+    font-weight: 600;
+}
+
+.table-user{
+    flex-grow: 1;
+    flex-basis: 300px;
+}
+
+.btn{
+    position: relative;
+    padding: 5px 10px;
+    background: var(--primary);
+    text-decoration: none;
+    color: var(--white);
+    border-radius: 6px;
+    cursor: pointer;
+    &:hover{
+        background: var(--blue);
+    }
+}
+
+.span{
+    font-weight: 400;
+}

@@ -1,0 +1,73 @@
+.modal-container{
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: var(--modal);
+}
+
+.modal-content {
+    width: 450px;
+    height: auto;
+    padding: 10px;
+    border-radius: 6px;
+    background: var(--white);
+}
+
+.modal-header{
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 20px;
+}
+
+.modal-header h2{
+    font-size: 22px;
+    font-weight: 600;
+}
+
+.modal-close{
+    cursor: pointer;
+    color: var(--dark);
+}
+
+.form-input{
+    width: 70%;
+    margin: 20px;
+    border: none;
+    outline: none;
+    border-bottom: 1px solid var(--gray);
+    &:focus{
+        border-bottom: 2px solid var(--blue);
+    }
+}
+
+.form-button {
+    width: 65%;
+    font-weight: bold;
+    background: var(--blue);
+    color: var(--white);
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin: 10px 0 20px 0;
+    border: 1px solid;
+}
+
+/* Estilos para cuando el botón se encuentra en hover y el modal está abierto */
+.form-button:not(.modal-open):hover {
+    background: var(--white);
+    color: var(--blue);
+    transition: 0.5s;
+}
+
+.modal-body{
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+

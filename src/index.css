@@ -1,0 +1,59 @@
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Poppins', sans-serif;;
+}
+
+:root{
+  --white: #fff;
+  --index-white: #fefefe;
+  --blue: #009688;
+  --gray: #777;
+  --dark-white: #fff3f3;
+  --grey: #eee;
+  --primary: #1976d2;
+  --dark: #363949;
+  --index-dark: #363949;
+  --modal: rgba(79, 79, 79, 0.7);
+  --light: #f6f6f9;
+  --index-light: #f6f6f6;
+  --red: #d32f2f;
+  --red-hover: #b32525;
+  --yellow: #fbc02d;
+  --green: #32ba38; 
+  --light-primary: #cfe8ff;
+  --light-red: #fecdd3;
+  --light-yellow: #fff2c6;
+  --light-green: #bbf7d0;
+}
+
+.dark{
+  --light: #181a1e;
+  --white: #181a1e;
+  --grey: #25252c;
+  --dark: #fbfbfb;
+  background: var(--grey);
+}
+
+::-webkit-scrollbar {
+  display: none;
+}
+
+main{
+  margin: 0 10px 0 10px;
+}
+
+.content{
+  position: relative;
+  width: calc(100% - 230px);
+  left: 230px;
+  transition: all 0.3s ease;
+  background: var(--grey);
+  height: 100vh;
+}
+
+.active{
+  width: calc(100% - 60px);
+  left: 60px;
+}

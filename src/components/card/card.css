@@ -1,0 +1,47 @@
+.cards{
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    grid-gap: 24px;
+    margin-top: 25px;
+}
+
+.cards li{
+    padding: 24px;
+    color: var(--dark);
+    background: var(--white);
+    border-radius: 20px;
+    display: flex;
+    align-items: center;
+    grid-gap: 24px;
+    cursor: pointer;
+}
+
+.cards li .fas{
+    width: 80px;
+    height: 80px;
+    border-radius: 10px;
+    font-size: 36px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.cards li:nth-child(1) .fas{
+    background: var(--light-primary);
+    color: var(--primary);
+}
+
+.cards li:nth-child(2) .fas{
+    background: var(--light-yellow);
+    color: var(--yellow);
+}
+
+.cards li:nth-child(3) .fas{
+    background: var(--light-red);
+    color: var(--red);
+}
+
+.cards li:nth-child(4) .fas{
+    background: var(--light-green);
+    color: var(--green);
+}

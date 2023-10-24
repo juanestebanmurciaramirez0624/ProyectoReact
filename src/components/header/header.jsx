@@ -1,6 +1,7 @@
 import './header.css'
 
-export default function Header(){
+// eslint-disable-next-line react/prop-types
+export default function Header({ nightMode }){
     return(
     <nav className='nav-header'>
     <i className="fas fa-bars"></i>
@@ -13,7 +14,7 @@ export default function Header(){
         </div>
     </form>
     <input type="checkbox" id="theme-togle" hidden />
-    <label className="theme-togle" />
+    <label className="theme-togle" onClick={nightMode} />
     </nav>
 
     )

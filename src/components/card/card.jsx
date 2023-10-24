@@ -4,39 +4,39 @@ export default function Card(){
     return(
     <ul className="cards">
     <li>
+        <i className="fas fa-envelope" />
+        <span className="info">
+        <h3>
+            457810
+        </h3>
+        <p>Mensajes</p>
+        </span>
+    </li>
+    <li>
+        <i className="fas fa-ticket" />
+        <span className="info">
+        <h3>
+            48
+        </h3>
+        <p>Tickets</p>
+        </span>
+    </li>
+    <li>
         <i className="fas fa-user" />
         <span className="info">
         <h3>
-            Usuarios
+            125462
         </h3>
-        <p>Modulo Usuarios</p>
+        <p>Clientes</p>
         </span>
     </li>
     <li>
-        <i className="fas fa-cookie-bite" />
+        <i className="fas fa-briefcase" />
         <span className="info">
         <h3>
-            Refrigerios
+            10
         </h3>
-        <p>Modulo Refrigerios</p>
-        </span>
-    </li>
-    <li>
-        <i className="fas fa-graduation-cap" />
-        <span className="info">
-        <h3>
-            Cursos
-        </h3>
-        <p>Modulo Cursos</p>
-        </span>
-    </li>
-    <li>
-        <i className="fas fa-pen-to-square" />
-        <span className="info">
-        <h3>
-            Asignar
-        </h3>
-        <p>Modulo Asignar</p>
+        <p>Servicios</p>
         </span>
     </li>
     </ul>

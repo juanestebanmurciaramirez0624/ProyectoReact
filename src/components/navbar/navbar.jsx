@@ -13,12 +13,12 @@ export default function Navbar(){
     </div>
   </a>
   <ul className="menu">
-    <li><a> <i className="fas fa-house" /> Dashboard</a></li>
+    <li><a> <i className="fas fa-house" /> Inicio</a></li>
     <li><a> <i className="fas fa-user" /> Usuarios</a></li>
-    <li><a> <i className="fas fa-cookie-bite" /> Refrigerios</a></li>
-    <li><a> <i className="fas fa-graduation-cap" /> Cursos</a></li>
-    <li><a> <i className="fas fa-pen-to-square" /> Asiganaciones</a></li>
-    <li><a> <i className="fas fa-question" /> Ayuda</a></li>
+    <li><a> <i className="fas fa-envelope" /> Mensajes</a></li>
+    <li><a> <i className="fas fa-ticket" /> Tickets</a></li>
+    <li><a> <i className="fas fa-briefcase" /> Servicios</a></li>
+    <li><a> <i className="fas fa-briefcase" /> Servicios</a></li>
   </ul>
   <ul className="menu">
     <li>

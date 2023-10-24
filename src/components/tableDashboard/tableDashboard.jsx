@@ -1,47 +1,49 @@
+import { useState } from "react";
 import "./tableDashboard.css";
+import Chat from '../chat/chat'
 
 export default function TableDashboard() {
+  const [isChatOpen, setIsChatOpen] = useState(false)
   return (
     <div className="content-table">
-      <div className="table-course">
-        <div className="header">
-          <i className="fa-solid fa-user" />
-          <h3>Tabla Cursos</h3>
+      <div className="content-inbox">
+        <div className="table-header">
+          <div className="title-dashboard">
+          <i className="fas fa-envelope" />
+          <h3>Bandeja de entrada</h3>
+          </div>
           <span />
           <a className="btn">Ver todo</a>
         </div>
-        <table>
-          <thead>
-            <tr>
-              <th>Nombre</th>
-              <th>sede</th>
-              <th>Numero de estudiantes</th>
-              <th>Director</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td>
-                course.name 
-              </td>
-              <td>
-                course.campus 
-              </td>
-              <td>
-                course.numberStudents
-              </td>
-              <td>
-               course.director
-              </td>
-            </tr>
-          </tbody>
-        </table>
+        <ul className="inbox">
+          <li className="show" onClick={() => setIsChatOpen(true)}>
+            <div className="title-inbox">
+            <i className="fas fa-check"></i>
+            <p>Mensaje</p>
+            </div>
+          </li>
+          <li className="no-show">
+            <div className="title-inbox">
+            <i className="fas fa-x"></i>
+            <p>Mensaje</p>
+            </div>
+          </li>
+          <Chat isOpenChat={isChatOpen} closeChat={() => setIsChatOpen(false)} />
+          <li className="no-show">
+            <div className="title-inbox">
+            <i className="fas fa-x"></i>
+            <p>Mensaje</p>
+            </div>
+          </li>
+        </ul>
       </div>
 
-      <div className="table-user">
-        <div className="header">
-          <i className="fa-solid fa-graduation-cap" />
-          <h3>Tabla Usuarios</h3>
+      <div className="table-dashboard">
+        <div className="table-header">
+        <div className="title-dashboard">
+          <i className="fas fa-ticket" />
+          <h3>Tabla Tickets</h3>
+          </div>
           <span />
           <a className="btn">Ver todo</a>
         </div>

@@ -22,7 +22,7 @@ const Modal = ({isOpen, closeModal, children, title}) => {
   if (!isOpen) return null
 
   return (
-    <div className='modal-container' data-animation='slideInOutRight'>
+    <div className='modal-container'>
       <div className='modal-content'>
         <header className='modal-header'>
           <br />

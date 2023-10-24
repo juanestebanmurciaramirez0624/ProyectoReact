@@ -5,6 +5,7 @@
     justify-content: space-between;
     grid-gap: 16px;
     flex-wrap: wrap;
+    margin-top: 10px;
 }
 
 .header .left h1{

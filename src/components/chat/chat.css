@@ -1,5 +1,5 @@
 .chat-content{
-    z-index: 1000;
+    z-index: 2001;
     position: fixed;
     right: 15px;
     bottom: 0px;

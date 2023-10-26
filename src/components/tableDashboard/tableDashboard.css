@@ -75,19 +75,6 @@
     flex-basis: 300px;
 }
 
-.btn{
-    position: relative;
-    padding: 5px 10px;
-    background: var(--primary);
-    text-decoration: none;
-    color: var(--index-white);
-    border-radius: 6px;
-    cursor: pointer;
-    &:hover{
-        background: var(--blue);
-    }
-}
-
 .content-table .content-inbox .inbox{
     width: 100%;
     list-style: none;

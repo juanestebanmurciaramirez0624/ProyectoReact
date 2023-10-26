@@ -13,7 +13,6 @@ export default function TableDashboard() {
           <h3>Bandeja de entrada</h3>
           </div>
           <span />
-          <a className="btn">Ver todo</a>
         </div>
         <ul className="inbox">
           <li className="show" onClick={() => setIsChatOpen(true)}>
@@ -37,7 +36,6 @@ export default function TableDashboard() {
           </li>
         </ul>
       </div>
-
       <div className="table-dashboard">
         <div className="table-header">
         <div className="title-dashboard">
@@ -45,7 +43,6 @@ export default function TableDashboard() {
           <h3>Tabla Tickets</h3>
           </div>
           <span />
-          <a className="btn">Ver todo</a>
         </div>
         <br />
         <table>

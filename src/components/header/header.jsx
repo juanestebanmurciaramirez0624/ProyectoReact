@@ -1,10 +1,14 @@
+import { useDarkMode } from '../../context/darkModeContext'
+import { useNavbar } from '../../context/navbar'
 import './header.css'
 
-// eslint-disable-next-line react/prop-types
-export default function Header({ nightMode }){
+export default function Header(){
+    const {DarkMode} = useDarkMode()
+    const {Navbar} = useNavbar()
+
     return(
     <nav className='nav-header'>
-    <i className="fas fa-bars"></i>
+    <i className="fas fa-bars" onClick={Navbar}></i>
     <form action="#">
         <div className="form-header">
         <input type="search" placeholder="Buscar..." />
@@ -13,9 +17,9 @@ export default function Header({ nightMode }){
         </button>
         </div>
     </form>
-    <input type="checkbox" id="theme-togle" hidden />
-    <label className="theme-togle" onClick={nightMode} />
-    </nav>
+   <input type="checkbox" id="theme-togle" hidden />
+            <label className="theme-togle" htmlFor="theme-togle" onClick={DarkMode} />
+        </nav>
 
     )
 }

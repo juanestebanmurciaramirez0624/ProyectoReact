@@ -26,16 +26,20 @@
     color: var(--dark);
 }
 
-.header .left .breadcrumb li a{
+.header .left .breadcrumb li p{
     color: var(--gray);
-    text-decoration: none;
 }
 
 .header .left .breadcrumb li .welcome{
     font-size: 26px;
 }
 
-.header .left .breadcrumb li a.nameuser{
-    color: var(--primary);
-    pointer-events: none;
+.header .left .breadcrumb .verticalBar{
+    color: var(--dark);
+    margin: -8px;
+}
+
+.header .left .breadcrumb li .nameuser{
+    color: var(--blue);
+    font-size: 18px;
 }

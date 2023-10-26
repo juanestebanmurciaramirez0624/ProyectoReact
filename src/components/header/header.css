@@ -97,6 +97,6 @@
     }
 }
 
-.nav-header #theme-togle:checked+.theme-togle::before{
-    left: calc(100% - (250px - 4px) - 2px);
+.nav-header #theme-togle:checked + .theme-togle::before {
+    left: calc(100% - 20px);
 }

@@ -1,7 +1,6 @@
 import { useEffect } from 'react'
 import './modal.css'
 
-// eslint-disable-next-line react/prop-types
 const Modal = ({isOpen, closeModal, children, title}) => {
   useEffect(() => {
     const keyup = (e) => {

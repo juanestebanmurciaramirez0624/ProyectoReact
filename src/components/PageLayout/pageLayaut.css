@@ -1,0 +1,18 @@
+main{
+    margin: 0 20px 0 20px;
+  }
+  
+  .content{
+    position: relative;
+    width: calc(100% - 230px);
+    left: 230px;
+    transition: all 0.3s ease;
+    background: var(--grey);
+    height: 100vh;
+  }
+  
+  .active{
+    width: calc(100% - 60px);
+    left: 60px;
+  }
+  

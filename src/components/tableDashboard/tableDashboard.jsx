@@ -51,22 +51,18 @@ export default function TableDashboard() {
         <table>
           <thead>
             <tr>
-              <th>Nombre</th>
-              <th>Telefono</th>
-              <th>Rol</th>
+              <th>Ticket</th>
+              <th>Ticket</th>
+              <th>Ticket</th>
+              <th>Ticket</th>
             </tr>
           </thead>
           <tbody>
             <tr>
-              <td>
-                user.fullName
-              </td>
-              <td>
-                user.phone
-              </td>
-              <td>
-                user.role
-              </td>
+              <td> sapo </td>
+              <td> sapo </td>
+              <td> sapo </td>
+              <td> sapo </td>
             </tr>
           </tbody>
         </table>

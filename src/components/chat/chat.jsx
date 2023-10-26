@@ -1,8 +1,24 @@
+import { useEffect } from 'react'
 import './chat.css'
 
-// eslint-disable-next-line react/prop-types
 const Chat = ({isOpenChat, closeChat}) => {
-  if (!isOpenChat) return null
+    useEffect(() => {
+        const keyup = (e) => {
+          if (e.key === 'Escape') {
+            closeChat()
+          }
+        }
+        if (isOpenChat) {
+          document.addEventListener('keyup', keyup)
+        } else {
+          document.removeEventListener('keyup', keyup)
+        }
+        return () => {
+          document.removeEventListener('keyup', keyup)
+        }
+      }, [isOpenChat, closeChat])
+
+      if (!isOpenChat) return null
 
   return (
         <div className="chat-content">

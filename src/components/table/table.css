@@ -1,20 +1,20 @@
-.content-table{
-    display: flex;
-    flex-wrap: wrap;
-    grid-gap: 24px;
-    margin-top: 24px;
-    width: 100%;
-    color: var(--dark);
+/*.container-table{
+        display: flex;
+        flex-wrap: wrap;
+        grid-gap: 24px;
+        margin-top: 24px;
+        width: 100%;
+        color: var(--dark);
 }
 
-.content-table>div{
+.container-table>div{
     border-radius: 20px;
     background: var(--white);
     padding: 24px;
     overflow-x: auto;
 }
 
-.content-table .table-header{
+.container-table .table-header{
     display: flex;
     align-items: center;
     grid-gap: 16px;
@@ -22,49 +22,49 @@
     justify-content: space-between;
 }
 
-.content-table .table-header .title-dashboard{
+.container-table .table-header .title-dashboard{
     display: flex;
 }
 
-.content-table .table-header .title-dashboard .fa-envelope,
-.content-table .table-header .title-dashboard .fa-ticket{
+.container-table .table-header .title-dashboard .fa-envelope,
+.container-table .table-header .title-dashboard .fa-ticket{
     margin-right: 10px;
 }
 
-.content-table .content-inbox{
+.container-table .content-inbox{
     flex-grow: 1;
     flex-basis: 500px;
 }
 
-.content-table table{
+.container-table table{
     width: 100%;
     border-collapse: collapse;
 }
 
 
 
-.content-table thead{
+.container-table thead{
     border-bottom: 1px solid var(--grey);
 }
 
-.content-table table th{ 
+.container-table table th{ 
     padding-bottom: 12px;
     font-size: 13px;
     text-align: left;
 }
 
-.content-table table td{
+.container-table table td{
     padding: 7px 0;
 }
 
-.content-table table tr td:first-child{
+.container-table table tr td:first-child{
     display: flex;
     align-items: center;
     grid-gap: 12px;
     padding-left: 6px;
 }
 
-.content-table .title-header h3{
+.container-table .title-header h3{
     margin-right: auto;
     font-size: 24px;
     font-weight: 600;
@@ -88,12 +88,12 @@
     }
 }
 
-.content-table .content-inbox .inbox{
+.container-table .content-inbox .inbox{
     width: 100%;
     list-style: none;
 }
 
-.content-table .content-inbox .inbox li{
+.container-table .content-inbox .inbox li{
     width: 100%;
     margin-bottom: 16px;
     background: var(--grey);
@@ -104,29 +104,29 @@
     justify-content: space-between;
 }
 
-.content-table .content-inbox .inbox li .title-inbox{
+.container-table .content-inbox .inbox li .title-inbox{
     display: flex;
     align-items: center;
 }
 
-.content-table .content-inbox .inbox li .title-inbox p{
+.container-table .content-inbox .inbox li .title-inbox p{
     margin-left: 6px;
 }
 
-.content-table .content-inbox .inbox li{
+.container-table .content-inbox .inbox li{
     cursor: pointer;
 }
 
-.content-table .content-inbox .inbox .show{
+.container-table .content-inbox .inbox .show{
     border-left: 10px solid var(--green);
 }
 
-.content-table .content-inbox .inbox .no-show{
+.container-table .content-inbox .inbox .no-show{
     border-left: 10px solid var(--red);
 }
 
-.content-table .content-inbox .inbox .fa-x,
-.content-table .content-inbox .inbox .fa-check{
+.container-table .content-inbox .inbox .fa-x,
+.container-table .content-inbox .inbox .fa-check{
     font-size: 25px;
 }
 

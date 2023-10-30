@@ -1,7 +1,7 @@
 import Navbar from '../navbar/navbar'
 import Header from '../header/header'
 import { useDarkMode } from '../../context/darkModeContext'
-import { useNavbar } from '../../context/navbar'
+import { useNavbar } from '../../context/navbarContext'
 import './pageLayaut.css'
 
 export default function PageLayout({ children }){

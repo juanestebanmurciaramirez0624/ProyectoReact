@@ -1,139 +1,43 @@
-/*.container-table{
-        display: flex;
-        flex-wrap: wrap;
-        grid-gap: 24px;
-        margin-top: 24px;
-        width: 100%;
-        color: var(--dark);
+.containter-table{
+    margin-top: 24px;
+    width: 100%;
+    color: var(--dark);
 }
 
-.container-table>div{
+.containter-table>div{
     border-radius: 20px;
     background: var(--white);
     padding: 24px;
     overflow-x: auto;
 }
 
-.container-table .table-header{
+.containter-table .header-table{
     display: flex;
     align-items: center;
     grid-gap: 16px;
     margin-bottom: 24px;
-    justify-content: space-between;
 }
 
-.container-table .table-header .title-dashboard{
-    display: flex;
-}
-
-.container-table .table-header .title-dashboard .fa-envelope,
-.container-table .table-header .title-dashboard .fa-ticket{
-    margin-right: 10px;
-}
-
-.container-table .content-inbox{
+.containter-table .crud-table{
     flex-grow: 1;
     flex-basis: 500px;
 }
 
-.container-table table{
+.containter-table .crud-table table{
     width: 100%;
     border-collapse: collapse;
 }
 
-
-
-.container-table thead{
-    border-bottom: 1px solid var(--grey);
-}
-
-.container-table table th{ 
-    padding-bottom: 12px;
+.containter-table .crud-table table th{
+    padding-bottom: 10px;
     font-size: 13px;
     text-align: left;
+    border-bottom: 1px solid var(--grey);
+    width: 10%;
 }
 
-.container-table table td{
-    padding: 7px 0;
-}
-
-.container-table table tr td:first-child{
-    display: flex;
-    align-items: center;
-    grid-gap: 12px;
-    padding-left: 6px;
-}
-
-.container-table .title-header h3{
-    margin-right: auto;
-    font-size: 24px;
-    font-weight: 600;
-}
-
-.table-dashboard{
-    flex-grow: 1;
-    flex-basis: 300px;
-}
-
-.btn{
-    position: relative;
-    padding: 5px 10px;
-    background: var(--primary);
-    text-decoration: none;
-    color: var(--index-white);
-    border-radius: 6px;
-    cursor: pointer;
-    &:hover{
-        background: var(--blue);
-    }
-}
-
-.container-table .content-inbox .inbox{
-    width: 100%;
-    list-style: none;
-}
-
-.container-table .content-inbox .inbox li{
-    width: 100%;
-    margin-bottom: 16px;
-    background: var(--grey);
-    padding: 14px 10px;
-    border-radius: 10px;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-}
-
-.container-table .content-inbox .inbox li .title-inbox{
-    display: flex;
-    align-items: center;
-}
-
-.container-table .content-inbox .inbox li .title-inbox p{
-    margin-left: 6px;
-}
-
-.container-table .content-inbox .inbox li{
-    cursor: pointer;
-}
-
-.container-table .content-inbox .inbox .show{
-    border-left: 10px solid var(--green);
-}
-
-.container-table .content-inbox .inbox .no-show{
-    border-left: 10px solid var(--red);
-}
-
-.container-table .content-inbox .inbox .fa-x,
-.container-table .content-inbox .inbox .fa-check{
-    font-size: 25px;
-}
-
-.span{
-    font-weight: 400;
-}
-
-.fas{
-    font-size: 2rem;
+.containter-table .crud-table table td{
+    padding: 10px 0;
+    border-bottom: 1px solid var(--grey);
+    width: 10%;
 }

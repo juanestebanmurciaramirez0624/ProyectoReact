@@ -1,5 +1,5 @@
 import { useDarkMode } from '../../context/darkModeContext'
-import { useNavbar } from '../../context/navbar'
+import { useNavbar } from '../../context/navbarContext'
 import './header.css'
 
 export default function Header(){

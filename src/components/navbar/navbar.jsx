@@ -1,7 +1,7 @@
 import './navbar.css'
 import logo from '../../assets/img/logo.png'
 import { NavLink } from 'react-router-dom'
-import { useNavbar } from '../../context/navbar'
+import { useNavbar } from '../../context/navbarContext'
 
 export default function Navbar(){
   const { isNavbar } = useNavbar()

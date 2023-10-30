@@ -71,3 +71,9 @@
     flex-direction: column;
 }
 
+.errors{
+    color: var(--red);
+    font-size: 10px;
+    width: 70%;
+    margin-top: -10px;
+}

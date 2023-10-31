@@ -9,6 +9,8 @@ import { DarkModeProvider } from './context/darkModeContext'
 import { NavbarProvider } from './context/navbarContext'
 import './App.css'
 import { AuthProvider } from './context/authContext'
+import ProfilePage from './pages/profilePage'
+import ProtectedRoute from './protectedRoute'
 
 
 function App() {
@@ -19,11 +21,15 @@ function App() {
               <BrowserRouter>
                 <Routes>
                   <Route path='/' element={<IndexPage />}></Route>
+                  {/*Rutas Protegidas*/}
+                  <Route element={<ProtectedRoute />}>
                   <Route path='/dashboard' element={<DashboardPage />}></Route>
+                  <Route path='/profile' element={<ProfilePage />}></Route>
                   <Route path='/inbox' element={<InboxPage />}></Route>
                   <Route path='/user' element={<UserPage />}></Route>
                   <Route path='/ticket' element={<TicketPage />}></Route>
                   <Route path='/service' element={<ServicePage />}></Route>
+                  </Route>
                 </Routes>
               </BrowserRouter>
             </NavbarProvider>

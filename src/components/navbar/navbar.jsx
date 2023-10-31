@@ -22,7 +22,7 @@ export default function Navbar(){
     <li><NavLink to='/inbox' className='a'> <i className="fas fa-envelope" /> Mensajes</NavLink></li>
     <li><NavLink to='/ticket' className='a'> <i className="fas fa-ticket" /> Tickets</NavLink></li>
     <li><NavLink to='/service' className='a'> <i className="fas fa-briefcase" /> Servicios</NavLink></li>
-    <li><NavLink to='/dashboard' className='a'> <i className="fas fa-briefcase" /> Servicios</NavLink></li>
+    <li><NavLink to='/profile' className='a'> <i className="fas fa-briefcase" /> Servicios</NavLink></li>
   </ul>
   <ul className="menu">
     <li>

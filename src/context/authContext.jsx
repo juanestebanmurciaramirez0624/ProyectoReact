@@ -1,5 +1,6 @@
-import { createContext, useContext, useState } from "react";
-import { registerForm, loginForm } from "../api/auth";
+import { createContext, useContext, useEffect, useState } from "react";
+import { registerForm, loginForm, verityToken} from "../api/auth";
+import Cookie from 'js-cookie'
 
 export const AuthContext = createContext()
 
@@ -7,6 +8,7 @@ export function AuthProvider ({ children }) {
     const [isUser, setUser] = useState(null)
     const [isAuthenticated, setAuthenticated] = useState(false)
     const [isErrors, setErrors] = useState([])
+    const [isLoading, setLoading] = useState(true)
 
     const singup = async (isUser) => {
         try {
@@ -26,6 +28,8 @@ export function AuthProvider ({ children }) {
         try {
             const res = await loginForm(isUser)
             console.log(res)
+            setAuthenticated(true)
+            setUser(res.date)
         } catch (error) {
             if(Array.isArray(error.response.data)){
                return setErrors(error.response.data)
@@ -34,9 +38,37 @@ export function AuthProvider ({ children }) {
         }
     }
 
+    useEffect(() => {
+        async function checkLogin () {
+            const cookie = Cookie.get()
+            if(!cookie.token){
+               setAuthenticated(false)
+               setLoading(false)
+               return setUser(null)
+            }       
+            try {
+                const res = await verityToken(cookie.token)
+                if(!res.data){
+                    setAuthenticated(false)
+                    setLoading(false)
+                    return
+                }
+                
+                setAuthenticated(true)
+                setUser(res.data)
+                setLoading(false)
+            } catch (error) {
+                setAuthenticated(false)
+                setUser(null)
+                setLoading(false)
+               }
+        }
+        checkLogin()
+    }, [])
+
     return(
         <AuthContext.Provider value={{
-            singup, login, isUser, isAuthenticated, isErrors
+            singup, login, isUser, isAuthenticated, isErrors,  isLoading
         }}>
             {children}
         </AuthContext.Provider>

@@ -9,6 +9,7 @@ import { DarkModeProvider } from './context/darkModeContext'
 import { NavbarProvider } from './context/navbarContext'
 import './App.css'
 import { AuthProvider } from './context/authContext'
+import { TicketProvider } from './context/ticketContext'
 import ProfilePage from './pages/profilePage'
 import ProtectedRoute from './protectedRoute'
 
@@ -16,6 +17,7 @@ import ProtectedRoute from './protectedRoute'
 function App() {
   return (
     <AuthProvider>
+        <TicketProvider>
           <DarkModeProvider>
             <NavbarProvider>
               <BrowserRouter>
@@ -34,6 +36,7 @@ function App() {
               </BrowserRouter>
             </NavbarProvider>
     </DarkModeProvider>
+    </TicketProvider>
     </AuthProvider>
   )
 }

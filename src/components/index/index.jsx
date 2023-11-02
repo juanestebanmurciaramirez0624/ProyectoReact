@@ -6,8 +6,8 @@ import Signup from '../signup/signup'
 import Login from '../login/login'
 
 export default function Index(){
-    const [isModalOpen1, setIsModalOpen1] = useState(false)
-    const [isModalOpen2, setIsModalOpen2] = useState(false)
+    const [isModalOpenLogin, setisModalOpenLogin] = useState(false)
+    const [isModalOpenSignUp, setisModalOpenSignUp] = useState(false)
     return (
         <div>
   <section className="header-index">
@@ -27,14 +27,14 @@ export default function Index(){
           del cliente y la eficiencia operativa, permitiéndote rastrear problemas, asignar 
           tareas y generar informes. ¡Con nosotros, la gestión de tickets es pan comido!</p>
       </div>
-        <button label="Login" className="hero-btn" onClick={() => setIsModalOpen1(true)}>Login</button>
-        <button label="Login" className="hero-btn" onClick={() => setIsModalOpen2(true)}>Registro</button>
+        <button className="hero-btn" onClick={() => setisModalOpenLogin(true)}>Login</button>
+        <button className="hero-btn" onClick={() => setisModalOpenSignUp(true)}>Registro</button>
     </div>
   </section>
-  <Modal isOpen={isModalOpen1} closeModal={() => setIsModalOpen1(false)} title='Login'>
+  <Modal isOpen={isModalOpenLogin} closeModal={() => setisModalOpenLogin(false)} title='Login'>
     <Login />
   </Modal>
-  <Modal isOpen={isModalOpen2} closeModal={() => setIsModalOpen2(false)} title='Registro de Usuario'>
+  <Modal isOpen={isModalOpenSignUp} closeModal={() => setisModalOpenSignUp(false)} title='Registro de Usuario'>
     <Signup />
   </Modal>
 </div>

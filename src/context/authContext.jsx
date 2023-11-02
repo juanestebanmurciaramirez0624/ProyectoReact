@@ -20,6 +20,9 @@ export function AuthProvider ({ children }) {
             if(Array.isArray(error.response.data)){
                 return setErrors(error.response.data)
              } 
+             if(Array.isArray(error.response.data)){
+                return setErrors(error.response.data)
+             } 
              setErrors([error.response.data.msg])
         }
     }
@@ -36,6 +39,12 @@ export function AuthProvider ({ children }) {
             } 
             setErrors([error.response.data.msg])
         }
+    }
+
+    const logout = () => {
+        Cookie.remove('token')
+        setAuthenticated(false)
+        setUser(null)
     }
 
     useEffect(() => {
@@ -68,8 +77,7 @@ export function AuthProvider ({ children }) {
 
     return(
         <AuthContext.Provider value={{
-            singup, login, isUser, isAuthenticated, isErrors,  isLoading
-        }}>
+            singup, login, isUser, isAuthenticated, isErrors,  isLoading, logout }}>
             {children}
         </AuthContext.Provider>
     )

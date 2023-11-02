@@ -2,9 +2,11 @@ import './navbar.css'
 import logo from '../../assets/img/logo.png'
 import { NavLink } from 'react-router-dom'
 import { useNavbar } from '../../context/navbarContext'
+import { useAuht } from '../../context/authContext'
 
 export default function Navbar(){
   const { isNavbar } = useNavbar()
+  const { logout } = useAuht
 
     return(
 <div className={`navbar ${isNavbar ? 'close' : ''}`}>
@@ -22,13 +24,15 @@ export default function Navbar(){
     <li><NavLink to='/inbox' className='a'> <i className="fas fa-envelope" /> Mensajes</NavLink></li>
     <li><NavLink to='/ticket' className='a'> <i className="fas fa-ticket" /> Tickets</NavLink></li>
     <li><NavLink to='/service' className='a'> <i className="fas fa-briefcase" /> Servicios</NavLink></li>
-    <li><NavLink to='/profile' className='a'> <i className="fas fa-briefcase" /> Servicios</NavLink></li>
+    <li><NavLink to='/profile' className='a'> <i className="fas fa-briefcase" /> Perfil</NavLink></li>
   </ul>
   <ul className="menu">
     <li>
-      <a className="logout a" > 
+      <NavLink className="logout a" to='/' onClick={() => {
+        logout()
+      }}> 
         <i className="fas fa-arrow-right-from-bracket fa-rotate-180" /> Salir
-      </a>
+      </NavLink>
     </li>
   </ul>
 </div>

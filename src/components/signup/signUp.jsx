@@ -12,8 +12,8 @@ export default function SignUp(){
         if (isAuthenticated) navigation("/dashboard")
     }, [isAuthenticated])
 
-    const onSubmit = handleSubmit(async (values) => {
-        singup(values)
+    const onSubmit = handleSubmit(async (data) => {
+        singup(data)
     })
 
     return (
@@ -31,7 +31,7 @@ export default function SignUp(){
                     message: "Nombre completo Requerido"
                 }
             })} className="form-input" placeholder="Nombre completo" />
-            {errors.fullname && <span className='errors'>{errors.fullname.message}</span>}
+            {errors.fullName && <span className='errors'>{errors.fullName.message}</span>}
             <input type="email" {...register('email', {
                 required:{
                     value: true,

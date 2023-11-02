@@ -1,14 +1,21 @@
 import { useForm } from 'react-hook-form';
 import { useAuht } from '../../context/authContext';
+import { useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
 //import { Toaster, toast} from 'sonner'
 
 export default function Login(){
     const { register, handleSubmit, formState: { errors } } = useForm();
-    const { login, isErrors } = useAuht()
+    const { login, isErrors, isAuthenticated } = useAuht()
     const onSubmit = handleSubmit((data) => {
         login(data)
     })
 
+    const navigation = useNavigate() 
+
+    useEffect(() => {
+        if (isAuthenticated) navigation("/dashboard")
+    }, [isAuthenticated])
     return (
         <form className="modal-body">
             {

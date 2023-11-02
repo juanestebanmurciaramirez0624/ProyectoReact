@@ -89,7 +89,7 @@
     color: var(--blue);
 }
 
-.navbar.close .menu li a{
+.navbar .close .menu li a{
     width: calc(48px - (4px *2 ));
 }
 

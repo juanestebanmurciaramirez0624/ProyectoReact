@@ -4,7 +4,7 @@
     color: var(--dark);
 }
 
-.containter-table>div{
+.containter-table{
     border-radius: 20px;
     background: var(--white);
     padding: 24px;
@@ -16,6 +16,19 @@
     align-items: center;
     grid-gap: 16px;
     margin-bottom: 24px;
+    justify-content: space-between;
+}
+
+.containter-table .header-table .open-modal{
+    color: var(--index-white);
+    background: var(--blue);
+    padding: 10px;
+    border-radius: 10px;
+    cursor: pointer;
+    &:hover{
+        background: var(--blue-hover);
+    }
+
 }
 
 .containter-table .crud-table{

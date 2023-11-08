@@ -58,13 +58,11 @@
     cursor: pointer;
     margin: 10px 0 20px 0;
     border: 1px solid;
-}
-
-/* Estilos para cuando el botón se encuentra en hover y el modal está abierto */
-.form-button:not(.modal-open):hover {
-    background: var(--white);
-    color: var(--blue);
-    transition: 0.5s;
+    &:hover{
+        background: var(--white);
+        color: var(--blue);
+        transition: 0.5s;
+    }
 }
 
 .modal-body{

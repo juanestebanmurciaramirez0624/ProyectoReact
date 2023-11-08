@@ -6,7 +6,7 @@ import { useAuht } from '../../context/authContext'
 
 export default function Navbar(){
   const { isNavbar } = useNavbar()
-  const { logout } = useAuht
+  const { logout } = useAuht()
 
     return(
 <div className={`navbar ${isNavbar ? 'close' : ''}`}>

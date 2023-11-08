@@ -6,7 +6,7 @@ import TableDashboard from '../components/tableDashboard/tableDashboard'
 export default function DashboardPage(){
     return(
         <PageLayout>
-            <HeaderMain title='Dashboard' user='Juan' />
+            <HeaderMain title='Dashboard' />
             <Card />
             <TableDashboard />
         </PageLayout>

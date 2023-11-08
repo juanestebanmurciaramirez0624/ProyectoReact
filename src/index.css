@@ -19,10 +19,11 @@
   --modal: rgba(79, 79, 79, 0.7);
   --light: #f6f6f9;
   --red: #d32f2f;
-  --yellow: #fbc02d;
-  --green: #32ba38; 
-  --dark-white: #fff3f3;
   --red-hover: #b32525;
+  --yellow: #fbc02d;
+  --green: #2cb433; 
+  --green-hover: #279b2d; 
+  --dark-white: #fff3f3;
   --light-primary: #cfe8ff;
   --light-red: #fecdd3;
   --light-yellow: #fff2c6;

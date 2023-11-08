@@ -96,8 +96,9 @@
 .navbar .menu li a .fas{
     min-width: calc(60px - ((4px + 6px) *2));
     display: flex;
-    font-size: 1.6rem;
+    font-size: 1.7rem;
     justify-content: center;
+    margin-right: 10px;
 }
 
 .navbar .menu li a.logout{

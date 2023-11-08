@@ -54,3 +54,26 @@
     border-bottom: 1px solid var(--grey);
     width: 10%;
 }
+
+.containter-table .crud-table table td .buttons{
+    padding: 5px;
+    cursor: pointer;
+    border-radius: 5px;
+    text-decoration: none;
+    color: var(--index-white);
+    
+}
+
+.containter-table .crud-table table td .update-button{
+    background: var(--green);
+    &:hover{
+        background: var(--green-hover);
+    }
+}
+
+.containter-table .crud-table table td .delete-button{
+    background: var(--red);
+    &:hover{
+        background: var(--red-hover);
+    }
+}

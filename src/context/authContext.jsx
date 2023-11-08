@@ -32,7 +32,7 @@ export function AuthProvider ({ children }) {
             const res = await loginForm(isUser)
             console.log(res)
             setAuthenticated(true)
-            setUser(res.date)
+            setUser(res.data)
         } catch (error) {
             if(Array.isArray(error.response.data)){
                return setErrors(error.response.data)

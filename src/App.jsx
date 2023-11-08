@@ -7,36 +7,46 @@ import TicketPage from './pages/ticketPage'
 import ServicePage from './pages/servicePages'
 import { DarkModeProvider } from './context/darkModeContext'
 import { NavbarProvider } from './context/navbarContext'
-import './App.css'
 import { AuthProvider } from './context/authContext'
 import { TicketProvider } from './context/ticketContext'
+import { UserProvider } from './context/userContext'
+import { ServiceProvider } from './context/serviceContext'
 import ProfilePage from './pages/profilePage'
 import ProtectedRoute from './protectedRoute'
+import './App.css'
+
 
 
 function App() {
   return (
     <AuthProvider>
+      <UserProvider>
         <TicketProvider>
-          <DarkModeProvider>
-            <NavbarProvider>
-              <BrowserRouter>
-                <Routes>
-                  <Route path='/' element={<IndexPage />}></Route>
-                  {/*Rutas Protegidas*/}
-                  <Route element={<ProtectedRoute />}>
-                  <Route path='/dashboard' element={<DashboardPage />}></Route>
-                  <Route path='/profile' element={<ProfilePage />}></Route>
-                  <Route path='/inbox' element={<InboxPage />}></Route>
-                  <Route path='/user' element={<UserPage />}></Route>
-                  <Route path='/ticket' element={<TicketPage />}></Route>
-                  <Route path='/service' element={<ServicePage />}></Route>
-                  </Route>
-                </Routes>
-              </BrowserRouter>
-            </NavbarProvider>
-    </DarkModeProvider>
-    </TicketProvider>
+          <ServiceProvider>
+            <DarkModeProvider>
+              <NavbarProvider>
+                <BrowserRouter>
+                  <Routes>
+                    <Route path='/' element={<IndexPage />}></Route>
+                    {/*Rutas Protegidas*/}
+                    <Route element={<ProtectedRoute />}>
+                    <Route path='/dashboard' element={<DashboardPage />}></Route>
+                    <Route path='/profile' element={<ProfilePage />}></Route>
+                    <Route path='/inbox' element={<InboxPage />}></Route>
+                    <Route path='/user' element={<UserPage />}></Route>
+                    <Route path='/user/:id' element={<UserPage />}></Route>
+                    <Route path='/ticket' element={<TicketPage />}></Route>
+                    <Route path='/ticket/:id' element={<TicketPage />}></Route>
+                    <Route path='/service' element={<ServicePage />}></Route>
+                    <Route path='/service/:id' element={<ServicePage />}></Route>
+                    </Route>
+                  </Routes>
+                </BrowserRouter>
+              </NavbarProvider>
+            </DarkModeProvider>
+          </ServiceProvider>
+        </TicketProvider>
+      </UserProvider>
     </AuthProvider>
   )
 }

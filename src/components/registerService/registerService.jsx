@@ -1,27 +1,25 @@
 import { useForm } from 'react-hook-form';
 import { useAuht } from '../../context/authContext';
-import { useTicket } from '../../context/ticketContext';
 import { useNavigate, useParams } from 'react-router-dom';
 import { useService } from '../../context/serviceContext';
 import { useEffect } from 'react';
 
-export default function RegisterTicket(){
+export default function RegisterService(){
     const { register, handleSubmit, formState: { errors }, setValue } = useForm();
     const { isErrors } = useAuht()
-    const { registerTicket, getTicket, updateTicket } = useTicket()
+    const { registerService, getService, updateService } = useService()
     const navigation = useNavigate()
-    const { isService } = useService()
     const params = useParams()
 
     useEffect(() => {
         async function loadTicket() {
             if (params.id) {
-            const ticket = await getTicket(params.id)
-            console.log(ticket)
-            setValue('name', ticket.name)
-            setValue('subject', ticket.subject)
-            setValue('description', ticket.description)
-            setValue('service', ticket.service)
+            const service = await getService(params.id)
+            console.log(service)
+            setValue('name', service.name)
+            setValue('description', service.description)
+            setValue('category', service.category)
+            setValue('price', service.price.$numberDecimal)
         }
     }
         loadTicket()
@@ -29,11 +27,11 @@ export default function RegisterTicket(){
 
     const onSubmit = handleSubmit(async (data) => {
         if (params.id) {
-            updateTicket(params.id, data)
-
+            updateService(params.id, data)
         } else {
-            registerTicket(data)
+            registerService(data)
         }
+        navigation('/service')
     })
 
     return (
@@ -48,38 +46,36 @@ export default function RegisterTicket(){
             <input type="text" {...register('name', {
                 required:{
                     value: true,
-                    message: "Nombre del ticket Requerido"
+                    message: "Nombre del servicio Requerido"
                 }
-            })} className="form-input" placeholder="Nombre ticket" />
+            })} className="form-input" placeholder="Nombre del Servicio" />
             {errors.name && <span className='errors'>{errors.name.message}</span>}
-            <input type="text" {...register('subject', {
-                required:{
-                    value: true,
-                    message: "Asunto del ticket Requerido"
-                }
-            })} className="form-input" placeholder="Asunto ticket" />
-            {errors.subject && <span className='errors'>{errors.subject.message}</span>}
             <input type="text" {...register('description', {
                 required:{
                     value: true,
-                    message: "Descripcion del ticket Requerida"
+                    message: "La descripción del servicio es Requerida"
                 }
-            })} className="form-input" placeholder="Descripción" />
+            })} className="form-input" placeholder="Descripción del servicio" />
             {errors.description && <span className='errors'>{errors.description.message}</span>}
-            <select {...register('service', {
+            <select {...register('category', {
                 required:{
                     value: true,
-                    message: "Servicio Requerido"
+                    message: "La Categoria del servicio es Requerida"
                 }
             })} className="form-input">
-                <option>Servicio</option>
-                {
-                    isService.map(isService => (
-                        <option key={isService._id} value={isService._id}>{isService.name}</option>
-                    ))
-                }
+                <option>Categoria del servicio</option>
+                <option value="Tecnologia">Tecnologia</option>
+                <option value="Salud">Salud</option>
+                <option value="Educación">Educación</option>
             </select>
-            {errors.service && <span className='errors'>{errors.service.message}</span>}
+            {errors.category && <span className='errors'>{errors.category.message}</span>}
+            <input type="number" {...register('price', {
+                required:{
+                    value: true,
+                    message: "El precio del servicio es Requerido"
+                }
+            })} className="form-input" placeholder='Precio del servicio'/>
+            {errors.price && <span className='errors'>{errors.price.message}</span>}
             <button type="submit" className="form-button" >Enviar</button>
         </form>
     )

@@ -1,10 +1,10 @@
 import PageLayout from "../components/PageLayout/pageLayout";
-import HeaderMain from "../components/headerMain/headerMain";
+import TableService from "../components/tableService/tableService";
 
 export default function ServicePage(){
     return(
         <PageLayout>
-            <HeaderMain title='Service' user='Juan' />
+            <TableService />
         </PageLayout>
     )
 }

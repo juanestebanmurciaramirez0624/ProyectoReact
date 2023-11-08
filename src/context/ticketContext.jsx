@@ -1,5 +1,5 @@
 import { createContext, useContext, useState } from "react";
-import { registerTicketRequest, getTicketsRequest } from '../api/ticket'
+import { registerTicketRequest, getTicketsRequest, deleteTicketsRequest, getTicketRequest, updateTicketsRequest } from '../api/ticket'
 
 const TicketContext = createContext()
 
@@ -8,8 +8,40 @@ export function TicketProvider ({ children }) {
     const [isErrors, setErrors] = useState([])
 
     const registerTicket = async (isTicket) => {
-        const res = await registerTicketRequest(isTicket)
-        console.log(res)
+        try {
+            const res = await registerTicketRequest(isTicket)
+            if (res.status === 200) setTicket(isTicket.filter(isTicket => isTicket._id === isTicket._id))
+        } catch (error) {
+            console.log(error)
+        }
+    }
+
+    const deleteTicket = async (id) => {
+        try {
+            const res = await deleteTicketsRequest(id)
+            if (res.status === 200) setTicket(isTicket.filter(isTicket => isTicket._id !== id))
+        } catch (error) {
+            console.log(error)
+        }
+    }
+
+    const updateTicket = async (id, isTicket) => {
+        try {
+            const res = await updateTicketsRequest(id, isTicket)
+            if (res.status === 200) setTicket(isTicket.filter(isTicket => isTicket._id !== id))
+        } catch (error) {
+            console.log(error)
+        }
+    }
+
+    const getTicket = async (id) => {
+        try {
+            const res = await getTicketRequest(id)
+            console.log(res)
+            return res.data
+        } catch (error) {
+            console.log(error)
+        }
     }
 
     const getTickets = async (isTicket) => {
@@ -25,7 +57,7 @@ export function TicketProvider ({ children }) {
     }
 
     return(
-        <TicketContext.Provider value={{isTicket, registerTicket, getTickets, isErrors}}>
+        <TicketContext.Provider value={{isTicket, registerTicket, getTickets, isErrors, deleteTicket, getTicket, updateTicket}}>
             {children}
         </TicketContext.Provider>
     )

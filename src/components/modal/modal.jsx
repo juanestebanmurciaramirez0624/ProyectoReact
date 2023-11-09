@@ -1,7 +1,7 @@
 import { useEffect } from 'react'
 import './modal.css'
 
-const Modal = ({isOpen, closeModal, children, title}) => {
+const Modal = ({ isOpen, closeModal, children, title }) => {
   useEffect(() => {
     const keyup = (e) => {
       if (e.key === 'Escape') {

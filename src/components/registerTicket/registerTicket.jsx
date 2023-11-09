@@ -1,7 +1,7 @@
 import { useForm } from 'react-hook-form';
 import { useAuht } from '../../context/authContext';
 import { useTicket } from '../../context/ticketContext';
-import { useNavigate, useParams } from 'react-router-dom';
+import { useParams } from 'react-router-dom';
 import { useService } from '../../context/serviceContext';
 import { useEffect } from 'react';
 
@@ -9,7 +9,6 @@ export default function RegisterTicket(){
     const { register, handleSubmit, formState: { errors }, setValue } = useForm();
     const { isErrors } = useAuht()
     const { registerTicket, getTicket, updateTicket } = useTicket()
-    const navigation = useNavigate()
     const { isService } = useService()
     const params = useParams()
 
@@ -17,7 +16,6 @@ export default function RegisterTicket(){
         async function loadTicket() {
             if (params.id) {
             const ticket = await getTicket(params.id)
-            console.log(ticket)
             setValue('name', ticket.name)
             setValue('subject', ticket.subject)
             setValue('description', ticket.description)
@@ -26,6 +24,12 @@ export default function RegisterTicket(){
     }
         loadTicket()
     })
+
+    var submit = 'Registrar'
+
+    if (params.id){
+        submit = 'Actualizar'
+    }
 
     const onSubmit = handleSubmit(async (data) => {
         if (params.id) {
@@ -80,7 +84,7 @@ export default function RegisterTicket(){
                 }
             </select>
             {errors.service && <span className='errors'>{errors.service.message}</span>}
-            <button type="submit" className="form-button" >Enviar</button>
+            <button type="submit" className="form-button" >{submit}</button>
         </form>
     )
 }

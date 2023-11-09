@@ -1,5 +1,6 @@
 import { createContext, useContext, useState } from "react";
-import { registerTicketRequest, getTicketsRequest, deleteTicketsRequest, getTicketRequest, updateTicketsRequest } from '../api/ticket'
+import { registerTicketRequest, getTicketsProfileRequest, getTicketsRequest, deleteTicketsRequest, getTicketRequest, updateTicketsRequest } from '../api/ticket'
+import { toast } from 'sonner';
 
 const TicketContext = createContext()
 
@@ -10,7 +11,7 @@ export function TicketProvider ({ children }) {
     const registerTicket = async (isTicket) => {
         try {
             const res = await registerTicketRequest(isTicket)
-            if (res.status === 200) setTicket(isTicket.filter(isTicket => isTicket._id === isTicket._id))
+            console.log(res)
         } catch (error) {
             console.log(error)
         }
@@ -20,6 +21,8 @@ export function TicketProvider ({ children }) {
         try {
             const res = await deleteTicketsRequest(id)
             if (res.status === 200) setTicket(isTicket.filter(isTicket => isTicket._id !== id))
+            const msg = res.data.msg
+            toast(msg)
         } catch (error) {
             console.log(error)
         }
@@ -56,8 +59,20 @@ export function TicketProvider ({ children }) {
          }
     }
 
+    const getTicketsProfile = async (isTicket) => {
+        try {
+            const res = await getTicketsProfileRequest(isTicket)
+            setTicket(res.data)
+        } catch (error) {
+            if(Array.isArray(error.response.data)){
+                return setErrors(error.response.data)
+             } 
+             setErrors([error.response.data.msg])
+         }
+    }
+
     return(
-        <TicketContext.Provider value={{isTicket, registerTicket, getTickets, isErrors, deleteTicket, getTicket, updateTicket}}>
+        <TicketContext.Provider value={{isTicket, registerTicket, getTickets, isErrors, deleteTicket, getTicket, updateTicket, getTicketsProfile}}>
             {children}
         </TicketContext.Provider>
     )

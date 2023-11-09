@@ -9,8 +9,8 @@ export default function HeaderMain({ title }){
 
     const { isUser } = useAuht()
     useEffect(() => {
-        
     })
+
     return(
         <div className="header">
         <div className="left">

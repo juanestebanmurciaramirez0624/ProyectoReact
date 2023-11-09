@@ -1,17 +1,25 @@
 import { useEffect, useState } from 'react'
 import { useUser } from '../../context/userContext'
 import './table.css'
-import { NavLink } from 'react-router-dom'
+import { NavLink, useParams } from 'react-router-dom'
 import Modal from '../modal/modal'
 import SignUp from '../signup/signup'
 
 export default function Table(){
     const [isModalOpenRegisterUser, setisModalOpenRegisterUser] = useState(false)
     const { getUsers, isUser, deleteUser } = useUser()
+    const params = useParams()
 
     useEffect(() =>{
       getUsers()
     },[])
+
+    
+    var modalTitle = 'Registro de Usuario'
+
+    if (params.id){
+      modalTitle = 'Actualizar Usuario'
+    }
 
     return(
         <div className="containter-table">
@@ -51,7 +59,7 @@ export default function Table(){
                 </tbody>
             </table>
         </div>
-        <Modal isOpen={isModalOpenRegisterUser} closeModal={() => setisModalOpenRegisterUser(false)} title='Registro de Users'>
+        <Modal isOpen={isModalOpenRegisterUser} closeModal={() => setisModalOpenRegisterUser(false)} title={modalTitle}>
           <SignUp />
         </Modal>
         </div>

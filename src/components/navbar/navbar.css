@@ -61,8 +61,7 @@
     cursor: pointer;
     height: 48px;
     background: transparent;
-    margin-left: 6px;
-    margin-top: 10px;
+    margin: 15px 0 15px 6px;
     border-radius: 48px 0 0 48px;
     padding: 4px;
     &:hover{
@@ -103,8 +102,7 @@
 
 .navbar .menu li a.logout{
     color: var(--red);
-}
-
-.navbar .menu li:hover a.logout{
-    color: var(--red-hover);
+    &:hover{
+        color: var(--red-hover);
+    }
 }

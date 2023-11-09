@@ -3,20 +3,26 @@ import '../table/table.css'
 import Modal from '../modal/modal'
 import RegisterTicket from '../registerTicket/registerTicket'
 import { useTicket } from '../../context/ticketContext'
-import { NavLink, useParams } from 'react-router-dom'
+import { NavLink, useLocation, useParams } from 'react-router-dom'
+import { Toaster } from 'sonner';
 
 export default function TableTicket(){
     const [isModalOpenRegisterTicket, setisModalOpenRegisterTicket] = useState(false)
-    const { getTickets, isTicket, deleteTicket } = useTicket()
+    const { getTickets, isTicket, deleteTicket, getTicketsProfile } = useTicket()
     const params = useParams()
-    var modalTitle = 'Registro de Ticktes'
+    let modalTitle = 'Registro de Ticktes'
+    let location = useLocation()
 
     if (params.id){
       modalTitle = 'Actualizar Ticktes'
     }
     
     useEffect(() =>{
-      getTickets()
+      if (location.pathname === '/ticket'){
+        getTickets()
+      } else if (location.pathname === '/ticketProfile') {
+        getTicketsProfile()
+      }
     },[])
 
     return(
@@ -61,6 +67,7 @@ export default function TableTicket(){
                 </tbody>
             </table>
         </div>
+        <Toaster richColors/>
         <Modal isOpen={isModalOpenRegisterTicket} closeModal={() => setisModalOpenRegisterTicket(false)} title={modalTitle}>
           <RegisterTicket />
         </Modal>

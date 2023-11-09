@@ -25,6 +25,12 @@ export default function RegisterService(){
         loadTicket()
     })
 
+    var submit = 'Registrar'
+
+    if (params.id){
+        submit = 'Actualizar'
+    }
+
     const onSubmit = handleSubmit(async (data) => {
         if (params.id) {
             updateService(params.id, data)
@@ -76,7 +82,7 @@ export default function RegisterService(){
                 }
             })} className="form-input" placeholder='Precio del servicio'/>
             {errors.price && <span className='errors'>{errors.price.message}</span>}
-            <button type="submit" className="form-button" >Enviar</button>
+            <button type="submit" className="form-button" >{submit}</button>
         </form>
     )
 }

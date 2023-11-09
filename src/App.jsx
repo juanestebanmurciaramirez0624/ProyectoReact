@@ -5,13 +5,13 @@ import InboxPage from './pages/inboxPage'
 import UserPage from './pages/userPage'
 import TicketPage from './pages/ticketPage'
 import ServicePage from './pages/servicePages'
+import ProfilePage from './pages/profilePage'
 import { DarkModeProvider } from './context/darkModeContext'
 import { NavbarProvider } from './context/navbarContext'
 import { AuthProvider } from './context/authContext'
 import { TicketProvider } from './context/ticketContext'
 import { UserProvider } from './context/userContext'
 import { ServiceProvider } from './context/serviceContext'
-import ProfilePage from './pages/profilePage'
 import ProtectedRoute from './protectedRoute'
 import './App.css'
 
@@ -31,11 +31,12 @@ function App() {
                     {/*Rutas Protegidas*/}
                     <Route element={<ProtectedRoute />}>
                     <Route path='/dashboard' element={<DashboardPage />}></Route>
-                    <Route path='/profile' element={<ProfilePage />}></Route>
+                    <Route path='/profile/:id' element={<ProfilePage />}></Route>
                     <Route path='/inbox' element={<InboxPage />}></Route>
                     <Route path='/user' element={<UserPage />}></Route>
                     <Route path='/user/:id' element={<UserPage />}></Route>
                     <Route path='/ticket' element={<TicketPage />}></Route>
+                    <Route path='/ticketProfile' element={<TicketPage />}></Route>
                     <Route path='/ticket/:id' element={<TicketPage />}></Route>
                     <Route path='/service' element={<ServicePage />}></Route>
                     <Route path='/service/:id' element={<ServicePage />}></Route>

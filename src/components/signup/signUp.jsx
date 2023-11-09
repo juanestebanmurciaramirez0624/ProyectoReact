@@ -1,7 +1,7 @@
 import { useForm } from 'react-hook-form';
 import { useAuht } from '../../context/authContext';
 import { useEffect } from 'react';
-import { useNavigate, useParams } from 'react-router-dom';
+import { useLocation, useNavigate, useParams } from 'react-router-dom';
 import { useUser } from '../../context/userContext';
 
 export default function SignUp(){
@@ -10,7 +10,8 @@ export default function SignUp(){
     const { getUser, updateUser } = useUser()
     const navigation = useNavigate()
     const params = useParams()
-
+    let location = useLocation()
+    console.log(location.pathname)
     useEffect(() => {
         async function loadTicket() {
             if (params.id) {
@@ -20,12 +21,19 @@ export default function SignUp(){
             setValue('documentType', user.documentType)
             setValue('documentNumber', user.documentNumber)
             setValue('email', user.email)
-        }else{
+            setValue('password', user.password)
+        }else if(location.pathname == '/') {
             if (isAuthenticated) navigation("/dashboard")
         }
     }
         loadTicket()
     }, [isAuthenticated])
+
+    var submit = 'Registrar'
+
+    if (params.id){
+        submit = 'Actualizar'
+    }
 
     const onSubmit = handleSubmit(async (data) => {
         if (params.id) {
@@ -82,7 +90,7 @@ export default function SignUp(){
                 }
             })} className="form-input" placeholder="Correo" />
             {errors.email && <span className='errors'>{errors.email.message}</span>}
-            {!params.id ? (
+            {location.pathname === `/profile/${params.id}` || location.pathname === '/'     ? (
                 <input type="password" {...register('password', {
                     required:{
                         value: true,
@@ -95,7 +103,7 @@ export default function SignUp(){
                 })} className="form-input" placeholder="contraseña" />
             ): null }
             {errors.password && <span className='errors'>{errors.password.message}</span>}
-            <button type="submit" className="form-button" >Enviar</button>
+            <button type="submit" className="form-button" >{submit}</button>
         </form>
     )
 }

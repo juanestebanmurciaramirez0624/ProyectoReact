@@ -3,15 +3,22 @@ import '../table/table.css'
 import Modal from '../modal/modal'
 import RegisterService from '../registerService/registerService'
 import { useService } from '../../context/serviceContext'
-import { NavLink } from 'react-router-dom'
+import { NavLink, useParams } from 'react-router-dom'
 
 export default function TableService(){
     const [isModalOpenRegisterService, setisModalOpenRegisterService] = useState(false)
     const { getServices, isService, deleteService } = useService()
+  const params = useParams()
 
     useEffect(() =>{
       getServices()
     },[])
+
+    var modalTitle = 'Registro de Servicios'
+
+    if (params.id){
+      modalTitle = 'Actualizar Servicio'
+    }
 
     return(
         <div className="containter-table">
@@ -51,7 +58,7 @@ export default function TableService(){
                 </tbody>
             </table>
         </div>
-        <Modal isOpen={isModalOpenRegisterService} closeModal={() => setisModalOpenRegisterService(false)} title='Registro de Services'>
+        <Modal isOpen={isModalOpenRegisterService} closeModal={() => setisModalOpenRegisterService(false)} title={modalTitle}>
           <RegisterService />
         </Modal>
         </div>

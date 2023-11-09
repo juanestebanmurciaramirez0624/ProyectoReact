@@ -20,11 +20,11 @@ export default function Navbar(){
   </a>
   <ul className="menu">
     <li><NavLink to='/dashboard' className='a'> <i className="fas fa-house" /> Inicio</NavLink></li>
-    <li><NavLink to='/user' className='a'> <i className="fas fa-user" /> Usuarios</NavLink></li>
-    <li><NavLink to='/inbox' className='a'> <i className="fas fa-envelope" /> Mensajes</NavLink></li>
+    <li><NavLink to='/user' className='a'> <i className="fas fa-users" /> Usuarios</NavLink></li>
+    <li><NavLink to='/ticketProfile' className='a'> <i className="fas fa-envelope" /> Mensajes</NavLink></li>
     <li><NavLink to='/ticket' className='a'> <i className="fas fa-ticket" /> Tickets</NavLink></li>
+    <li><NavLink to='/ticketProfile' className='a'> <i className="fas fa-ticket" /> TicketsP</NavLink></li>
     <li><NavLink to='/service' className='a'> <i className="fas fa-briefcase" /> Servicios</NavLink></li>
-    <li><NavLink to='/profile' className='a'> <i className="fas fa-briefcase" /> Perfil</NavLink></li>
   </ul>
   <ul className="menu">
     <li>
@@ -36,5 +36,4 @@ export default function Navbar(){
     </li>
   </ul>
 </div>
-    )
-}
+)}

@@ -71,9 +71,8 @@
     cursor: pointer;
 }
 
-.nav-header .profile img{
-    object-fit: cover;
-    border-radius: 50%;
+.nav-header .profile{
+    color: var(--blue);
 }
 
 .nav-header .theme-togle{
@@ -97,6 +96,8 @@
     }
 }
 
+
 .nav-header #theme-togle:checked + .theme-togle::before {
     left: calc(100% - 20px);
 }
+

@@ -12,11 +12,10 @@ export default function PageLayout({ children }){
         <div className={isDarkMode ? 'dark' : ''}>
                 <Navbar />
                 <div className= {`content ${isNavbar ? 'active' : ''}`}>
-                    <Header/>
+                <Header/>
                 <main>
                     {children}
                 </main>
         </div>
         </div>
-)
-}
+)}

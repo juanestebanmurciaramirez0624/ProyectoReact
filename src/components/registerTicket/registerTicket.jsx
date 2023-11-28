@@ -5,7 +5,7 @@ import { useParams } from 'react-router-dom';
 import { useService } from '../../context/serviceContext';
 import { useEffect } from 'react';
 
-export default function RegisterTicket(){
+export default function RegisterTicket({ updateTickets }){
     const { register, handleSubmit, formState: { errors }, setValue } = useForm();
     const { isErrors } = useAuht()
     const { registerTicket, getTicket, updateTicket } = useTicket()
@@ -34,9 +34,10 @@ export default function RegisterTicket(){
     const onSubmit = handleSubmit(async (data) => {
         if (params.id) {
             updateTicket(params.id, data)
-
+            updateTickets()
         } else {
             registerTicket(data)
+            updateTickets()
         }
     })
 

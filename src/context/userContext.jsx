@@ -1,5 +1,6 @@
 import { createContext, useContext, useState } from "react";
 import { registerUserRequest, getUsersRequest, deleteUsersRequest, getUserRequest, updateUsersRequest } from '../api/User'
+import { toast } from 'sonner';
 
 const UserContext = createContext()
 
@@ -35,7 +36,16 @@ export function UserProvider ({ children }) {
     const updateUser = async (id, isUser) => {
         try {
             const res = await updateUsersRequest(id, isUser)
-            if (res.status === 200) setUser(isUser.filter(isUser => isUser._id !== id))
+            const msg = res.data.msg
+            console.log(res)
+            toast.success(msg, {
+                style: {
+                    background: 'var(--green)', 
+                    color: 'var(--index-white)',
+                    border: 'none'
+                },
+            duration: 3000
+            })
         } catch (error) {
             console.log(error)
         }

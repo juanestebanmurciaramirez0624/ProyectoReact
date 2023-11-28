@@ -17,9 +17,13 @@ export default function TableTicket(){
       modalTitle = 'Actualizar Ticktes'
     }
     
+    function tableTickets () {
+      getTickets()
+    }
+
     useEffect(() =>{
       if (location.pathname === '/ticket'){
-        getTickets()
+        tableTickets()
       } else if (location.pathname === '/ticketProfile') {
         getTicketsProfile()
       }
@@ -69,7 +73,7 @@ export default function TableTicket(){
         </div>
         <Toaster richColors/>
         <Modal isOpen={isModalOpenRegisterTicket} closeModal={() => setisModalOpenRegisterTicket(false)} title={modalTitle}>
-          <RegisterTicket />
+          <RegisterTicket updateTickets={ tableTickets } />
         </Modal>
         </div>
     )

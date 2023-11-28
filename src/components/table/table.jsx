@@ -4,6 +4,7 @@ import './table.css'
 import { NavLink, useParams } from 'react-router-dom'
 import Modal from '../modal/modal'
 import SignUp from '../signup/signup'
+import { Toaster } from 'sonner'
 
 export default function Table(){
     const [isModalOpenRegisterUser, setisModalOpenRegisterUser] = useState(false)
@@ -59,6 +60,7 @@ export default function Table(){
                 </tbody>
             </table>
         </div>
+        <Toaster richColors/>
         <Modal isOpen={isModalOpenRegisterUser} closeModal={() => setisModalOpenRegisterUser(false)} title={modalTitle}>
           <SignUp />
         </Modal>

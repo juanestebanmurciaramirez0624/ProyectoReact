@@ -4,14 +4,24 @@ import { toast } from 'sonner';
 
 const TicketContext = createContext()
 
+// eslint-disable-next-line react/prop-types
 export function TicketProvider ({ children }) {
     const  [ isTicket, setTicket ] = useState([])
-    const [isErrors, setErrors] = useState([])
+    const [isErrors] = useState([])
 
     const registerTicket = async (isTicket) => {
         try {
             const res = await registerTicketRequest(isTicket)
+            const msg = res.data.msg
             console.log(res)
+            toast.success(msg, {
+                style: {
+                    background: 'var(--green)', 
+                    color: 'var(--index-white)',
+                    border: 'none'
+                },
+            duration: 3000
+            })
         } catch (error) {
             console.log(error)
         }
@@ -22,7 +32,14 @@ export function TicketProvider ({ children }) {
             const res = await deleteTicketsRequest(id)
             if (res.status === 200) setTicket(isTicket.filter(isTicket => isTicket._id !== id))
             const msg = res.data.msg
-            toast(msg)
+            toast.success(msg, {
+                style: {
+                    background: 'var(--green)', 
+                    color: 'var(--index-white)',
+                    border: 'none'
+                },
+            duration: 3000
+            })
         } catch (error) {
             console.log(error)
         }
@@ -31,7 +48,16 @@ export function TicketProvider ({ children }) {
     const updateTicket = async (id, isTicket) => {
         try {
             const res = await updateTicketsRequest(id, isTicket)
-            if (res.status === 200) setTicket(isTicket.filter(isTicket => isTicket._id !== id))
+            const msg = res.data.msg
+            console.log(res)
+            toast.success(msg, {
+                style: {
+                    background: 'var(--green)', 
+                    color: 'var(--index-white)',
+                    border: 'none'
+                },
+            duration: 3000
+            })
         } catch (error) {
             console.log(error)
         }
@@ -51,12 +77,11 @@ export function TicketProvider ({ children }) {
         try {
             const res = await getTicketsRequest(isTicket)
             setTicket(res.data)
+            console.log(res.data.length)
+            if (res.status === 200) setTicket(isTicket(res => res.data.length !== res.data.length))
         } catch (error) {
-            if(Array.isArray(error.response.data)){
-                return setErrors(error.response.data)
-             } 
-             setErrors([error.response.data.msg])
-         }
+            console.log(error)
+        }
     }
 
     const getTicketsProfile = async (isTicket) => {
@@ -64,11 +89,8 @@ export function TicketProvider ({ children }) {
             const res = await getTicketsProfileRequest(isTicket)
             setTicket(res.data)
         } catch (error) {
-            if(Array.isArray(error.response.data)){
-                return setErrors(error.response.data)
-             } 
-             setErrors([error.response.data.msg])
-         }
+            console.log(error)
+        }
     }
 
     return(

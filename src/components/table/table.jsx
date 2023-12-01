@@ -3,14 +3,17 @@ import { useUser } from '../../context/userContext'
 import './table.css'
 import { NavLink, useParams } from 'react-router-dom'
 import Modal from '../modal/modal'
-import SignUp from '../signup/signup'
+import SignUp from '../signup/signUp'
 import { Toaster } from 'sonner'
+import { useAuht } from '../../context/authContext'
 
 export default function Table(){
     const [isModalOpenRegisterUser, setisModalOpenRegisterUser] = useState(false)
-    const { getUsers, isUser, deleteUser } = useUser()
+    const { getUsers, isUsers, deleteUser } = useUser()
+    const { isUser } = useAuht()
     const params = useParams()
 
+    console.log(isUser)
     useEffect(() =>{
       getUsers()
     },[])
@@ -38,22 +41,30 @@ export default function Table(){
                     <th>Tipo Documento</th>
                     <th>Numero Documento</th>
                     <th>Correo</th>
-                    <th>Modificar</th>
-                    <th>Eliminar</th>
+                    <th>Rol</th>
+                    {(isUser.rol.includes('Administrador')) && (
+                      <>
+                        <th>Modificar</th>
+                        <th>Eliminar</th>
+                      </>
+                    )}
                 </tr>
                 </thead>
                 <tbody>
                     {
-                        isUser.map(isUser => (
-                            <tr key={isUser._id}>
-                                <td>{isUser.fullName}</td>
-                                <td>{isUser.documentType}</td>
-                                <td>{isUser.documentNumber}</td>
-                                <td>{isUser.email}</td>
-                                <td><NavLink to={`/user/${isUser._id}`} className='buttons update-button' onClick={() => setisModalOpenRegisterUser(true)}>Modificar</NavLink></td>  
-                                <td><a className='buttons delete-button' onClick={() => {
-                                deleteUser(isUser._id)
-                                }}>Eliminar</a></td>
+                        isUsers.map(isUsers => (
+                            <tr key={isUsers._id}>
+                                <td>{isUsers.fullName}</td>
+                                <td>{isUsers.documentType}</td>
+                                <td>{isUsers.documentNumber}</td>
+                                <td>{isUsers.email}</td>
+                                <td>{isUsers.rol}</td>
+                                {(isUser.rol.includes('Administrador')) && (
+                                  <>
+                                    <td><NavLink to={`/user/${isUsers._id}`} className='buttons update-button' onClick={() => setisModalOpenRegisterUser(true)}>Modificar</NavLink></td>  
+                                    <td><a className='buttons delete-button' onClick={() => {deleteUser(isUsers._id)}}>Eliminar</a></td>
+                                  </>
+                                )}
                             </tr>
                         ))
                     }

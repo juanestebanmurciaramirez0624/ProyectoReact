@@ -4,7 +4,6 @@ import { toast } from 'sonner';
 
 const TicketContext = createContext()
 
-// eslint-disable-next-line react/prop-types
 export function TicketProvider ({ children }) {
     const  [ isTicket, setTicket ] = useState([])
     const [isErrors] = useState([])
@@ -15,11 +14,6 @@ export function TicketProvider ({ children }) {
             const msg = res.data.msg
             console.log(res)
             toast.success(msg, {
-                style: {
-                    background: 'var(--green)', 
-                    color: 'var(--index-white)',
-                    border: 'none'
-                },
             duration: 3000
             })
         } catch (error) {
@@ -33,11 +27,6 @@ export function TicketProvider ({ children }) {
             if (res.status === 200) setTicket(isTicket.filter(isTicket => isTicket._id !== id))
             const msg = res.data.msg
             toast.success(msg, {
-                style: {
-                    background: 'var(--green)', 
-                    color: 'var(--index-white)',
-                    border: 'none'
-                },
             duration: 3000
             })
         } catch (error) {
@@ -51,11 +40,6 @@ export function TicketProvider ({ children }) {
             const msg = res.data.msg
             console.log(res)
             toast.success(msg, {
-                style: {
-                    background: 'var(--green)', 
-                    color: 'var(--index-white)',
-                    border: 'none'
-                },
             duration: 3000
             })
         } catch (error) {
@@ -77,8 +61,6 @@ export function TicketProvider ({ children }) {
         try {
             const res = await getTicketsRequest(isTicket)
             setTicket(res.data)
-            console.log(res.data.length)
-            if (res.status === 200) setTicket(isTicket(res => res.data.length !== res.data.length))
         } catch (error) {
             console.log(error)
         }

@@ -5,7 +5,7 @@ import './card.css'
 
 export default function Card(){
     const { isTicket } = useTicket()
-    const { isUser } = useUser()
+    const { isUsers } = useUser()
     const { isService } = useService()
 
     return(
@@ -13,8 +13,7 @@ export default function Card(){
     <li>
         <i className="fas fa-envelope" />
         <span className="info">
-        <h3>
-        </h3>
+        <h3>{isTicket.length}</h3>
         <p>Mensajes</p>
         </span>
     </li>
@@ -28,7 +27,7 @@ export default function Card(){
     <li>
         <i className="fas fa-user" />
         <span className="info">
-        <h3>{isUser.length}</h3>
+        <h3>{isUsers.length}</h3>
         <p>Clientes</p>
         </span>
     </li>

@@ -71,6 +71,13 @@
     }
 }
 
+.containter-table .crud-table table td .chat-button{
+    background: var(--yellow);
+    &:hover{
+        background: var(--yellow-hover);
+    }
+}
+
 .containter-table .crud-table table td .delete-button{
     background: var(--red);
     &:hover{

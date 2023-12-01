@@ -11,6 +11,10 @@
     0 32px 64px -48px rgba(204, 198, 198, 0.5) ;
 }
 
+.text-center{
+    text-align: center;
+}
+
 .chat-content .chat-header{
     border-top-left-radius: 15px;
     border-top-right-radius: 15px;
@@ -38,7 +42,7 @@
 }
 
 .chat-content .chat-body .outgoing{
-    margin: 0 100px;
+    margin: 20px 0 20px 250px;
 }
 
 .chat-content .chat-body .chat p{
@@ -48,6 +52,7 @@
     border-radius: 10px 10px 0 10px;
     background: var(--blue);
     font-size: 0.95rem;
+    margin-bottom: 15px;
 }
 
 .chat-content .chat-body .incoming p{
@@ -78,14 +83,15 @@
     background: var(--white);
 }
 
-.chat-content .chat-input i{
+.chat-content .chat-input .send{
     display: flex;
     color: var(--blue);
     font-size: 1.35rem;
     cursor: pointer;
     align-items: center;
     height: 55px;
-    visibility: hidden;
+    background: transparent;
+    border: none;
 }
 
 .chat-content .chat-input textarea:focus ~ i{

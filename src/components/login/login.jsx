@@ -6,7 +6,7 @@ import { useNavigate } from 'react-router-dom';
 
 export default function Login(){
     const { register, handleSubmit, formState: { errors } } = useForm();
-    const { login, isErrors, isAuthenticated } = useAuht()
+    const { login, isAuthenticated } = useAuht()
     const onSubmit = handleSubmit((data) => {
         login(data)
     })
@@ -18,13 +18,6 @@ export default function Login(){
     }, [isAuthenticated])
     return (
         <form className="modal-body">
-            {
-                isErrors.map((error, i) => (
-                    <div key={i}>
-                        {error}
-                    </div>
-                ))
-            }
             <input type="text" 
             {...register('email', {
                 required:{

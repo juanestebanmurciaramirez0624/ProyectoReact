@@ -4,11 +4,13 @@ import Modal from '../modal/modal'
 import RegisterService from '../registerService/registerService'
 import { useService } from '../../context/serviceContext'
 import { NavLink, useParams } from 'react-router-dom'
+import { useAuht } from '../../context/authContext'
 
 export default function TableService(){
     const [isModalOpenRegisterService, setisModalOpenRegisterService] = useState(false)
     const { getServices, isService, deleteService } = useService()
-  const params = useParams()
+    const params = useParams()
+    const { isUser } = useAuht()
 
     useEffect(() =>{
       getServices()
@@ -27,7 +29,9 @@ export default function TableService(){
               <div>
                 <h3>Tabla Servicio</h3>
               </div>
-              <a className= "open-modal" onClick={() => setisModalOpenRegisterService(true)}>Registro</a>
+              {(isUser.rol.includes('Administrador')) && (
+                <a className= "open-modal" onClick={() => setisModalOpenRegisterService(true)}>Registrar</a>
+              )}
             </div>
             <table>
                 <thead>
@@ -36,8 +40,12 @@ export default function TableService(){
                     <th>Descripcion</th>
                     <th>Categoria</th>
                     <th>Precio</th>
-                    <th>Modificar</th>
-                    <th>Eliminar</th>
+                    {(isUser.rol.includes('Administrador')) && (
+                      <>
+                        <th>Modificar</th>
+                        <th>Eliminar</th>
+                      </>
+                    )}
                 </tr>
                 </thead>
                 <tbody>
@@ -48,11 +56,13 @@ export default function TableService(){
                           <td>{isService.description}</td>
                           <td>{isService.category}</td>
                           <td>{isService.price.$numberDecimal}</td>
-                          <td><NavLink to={`/service/${isService._id}`} className='buttons update-button' onClick={() => setisModalOpenRegisterService(true)}>Modificar</NavLink></td>  
-                          <td><a className='buttons delete-button' onClick={() => {
-                          deleteService(isService._id)
-                          }}>Eliminar</a></td>
-                        </tr>
+                          {(isUser.rol.includes('Administrador')) && (
+                            <>
+                              <td><NavLink to={`/service/${isService._id}`} className='buttons update-button' onClick={() => setisModalOpenRegisterService(true)}>Modificar</NavLink></td>  
+                              <td><a className='buttons delete-button' onClick={() => {deleteService(isService._id)}}>Eliminar</a></td>
+                            </>  
+                          )}
+                          </tr>
                       ))
                     }
                 </tbody>

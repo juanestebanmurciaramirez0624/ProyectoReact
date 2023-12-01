@@ -5,18 +5,18 @@ import { toast } from 'sonner';
 const UserContext = createContext()
 
 export function UserProvider ({ children }) {
-    const  [ isUser, setUser ] = useState([])
+    const  [ isUsers, setUser ] = useState([])
     const [isErrors, setErrors] = useState([])
 
-    const registerUser = async (isUser) => {
-        const res = await registerUserRequest(isUser)
+    const registerUser = async (isUsers) => {
+        const res = await registerUserRequest(isUsers)
         console.log(res)
     }
 
     const deleteUser = async (id) => {
         try {
             const res = await deleteUsersRequest(id)
-            if (res.status === 200) setUser(isUser.filter(isUser => isUser._id !== id))
+            if (res.status === 200) setUser(isUsers.filter(isUsers => isUsers._id !== id))
             console.log(res)
         } catch (error) {
             console.log(error)
@@ -33,9 +33,9 @@ export function UserProvider ({ children }) {
         }
     }
 
-    const updateUser = async (id, isUser) => {
+    const updateUser = async (id, isUsers) => {
         try {
-            const res = await updateUsersRequest(id, isUser)
+            const res = await updateUsersRequest(id, isUsers)
             const msg = res.data.msg
             console.log(res)
             toast.success(msg, {
@@ -51,9 +51,9 @@ export function UserProvider ({ children }) {
         }
     }
 
-    const getUsers = async (isUser) => {
+    const getUsers = async (isUsers) => {
         try {
-            const res = await getUsersRequest(isUser)
+            const res = await getUsersRequest(isUsers)
             setUser(res.data)
         } catch (error) {
             if(Array.isArray(error.response.data)){
@@ -64,7 +64,7 @@ export function UserProvider ({ children }) {
     }
 
     return(
-        <UserContext.Provider value={{isUser, registerUser, getUsers, isErrors, deleteUser, getUser, updateUser}}>
+        <UserContext.Provider value={{isUsers, registerUser, getUsers, isErrors, deleteUser, getUser, updateUser}}>
             {children}
         </UserContext.Provider>
     )

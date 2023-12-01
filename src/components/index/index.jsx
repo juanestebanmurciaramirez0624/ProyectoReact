@@ -2,8 +2,9 @@ import './index.css'
 import logo from '../../assets/img/logo.png'
 import { useState } from 'react'
 import Modal from '../modal/modal'
-import Signup from '../signup/signup'
+import Signup from '../signup/signUp'
 import Login from '../login/login'
+import { Toaster } from 'sonner'
 
 export default function Index(){
     const [isModalOpenLogin, setisModalOpenLogin] = useState(false)
@@ -31,6 +32,7 @@ export default function Index(){
         <button className="hero-btn" onClick={() => setisModalOpenSignUp(true)}>Registro</button>
     </div>
   </section>
+  <Toaster richColors visibleToasts={1} theme='dark'/>
   <Modal isOpen={isModalOpenLogin} closeModal={() => setisModalOpenLogin(false)} title='Login'>
     <Login />
   </Modal>

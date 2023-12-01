@@ -3,12 +3,14 @@ import { useAuht } from '../../context/authContext';
 import { useTicket } from '../../context/ticketContext';
 import { useParams } from 'react-router-dom';
 import { useService } from '../../context/serviceContext';
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 
+// eslint-disable-next-line react/prop-types
 export default function RegisterTicket({ updateTickets }){
     const { register, handleSubmit, formState: { errors }, setValue } = useForm();
     const { isErrors } = useAuht()
     const { registerTicket, getTicket, updateTicket } = useTicket()
+    const [minDate, setMinDate] = useState('');
     const { isService } = useService()
     const params = useParams()
 
@@ -20,9 +22,12 @@ export default function RegisterTicket({ updateTickets }){
             setValue('subject', ticket.subject)
             setValue('description', ticket.description)
             setValue('service', ticket.service)
+            setValue('date', ticket.date)
         }
     }
         loadTicket()
+        const today = new Date().toISOString().split('T')[0];
+        setMinDate(today);
     })
 
     var submit = 'Registrar'
@@ -77,7 +82,7 @@ export default function RegisterTicket({ updateTickets }){
                     message: "Servicio Requerido"
                 }
             })} className="form-input">
-                <option>Servicio</option>
+                <option value=''>Servicio</option>
                 {
                     isService.map(isService => (
                         <option key={isService._id} value={isService._id}>{isService.name}</option>
@@ -85,6 +90,16 @@ export default function RegisterTicket({ updateTickets }){
                 }
             </select>
             {errors.service && <span className='errors'>{errors.service.message}</span>}
+            <input type="date" {...register('date', {
+                required:{
+                    value: true,
+                    message: "Fecha del ticket Requerida"
+                },
+                validate: (value) => {
+                    return value >= minDate || 'Fecha no disponible '
+                }
+            })} className="form-input" placeholder="Fecha del ticket" />
+            {errors.date && <span className='errors'>{errors.date.message}</span>}
             <button type="submit" className="form-button" >{submit}</button>
         </form>
     )

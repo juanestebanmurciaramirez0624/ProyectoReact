@@ -1,5 +1,6 @@
 import { createContext, useContext, useEffect, useState } from "react";
 import { registerForm, loginForm, verityToken} from "../api/auth";
+import { toast } from 'sonner'
 import Cookie from 'js-cookie'
 
 export const AuthContext = createContext()
@@ -17,13 +18,7 @@ export function AuthProvider ({ children }) {
             setUser(res.data)
             setAuthenticated(true)
         } catch (error) {
-            if(Array.isArray(error.response.data)){
-                return setErrors(error.response.data)
-             } 
-             if(Array.isArray(error.response.data)){
-                return setErrors(error.response.data)
-             } 
-             setErrors([error.response.data.msg])
+            toast.error(error.response.data.msg)
         }
     }
 
@@ -34,10 +29,7 @@ export function AuthProvider ({ children }) {
             setAuthenticated(true)
             setUser(res.data)
         } catch (error) {
-            if(Array.isArray(error.response.data)){
-               return setErrors(error.response.data)
-            } 
-            setErrors([error.response.data.msg])
+            toast.error(error.response.data.msg)
         }
     }
 

@@ -1,16 +1,12 @@
 import { useAuht } from '../../context/authContext'
 import { useLocation } from 'react-router-dom'
 import './headerMain.css'
-import { useEffect } from 'react'
 
 export default function HeaderMain({ title }){
     const location = useLocation()
     const url = location.pathname
-
     const { isUser } = useAuht()
-    useEffect(() => {
-    })
-
+    
     return(
         <div className="header">
         <div className="left">
